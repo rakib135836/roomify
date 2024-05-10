@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        Briem :'"Briem Hand", cursive'
+      }
+
+    },
   },
   plugins: [
     require('daisyui'),
