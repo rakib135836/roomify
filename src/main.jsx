@@ -10,6 +10,8 @@ import {
 } from "react-router-dom";
 import Root from './LayOut/Root';
 import Home from './pages/Home/Home';
+import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
+import Login from './pages/Login/Login';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
       {
         path:"/",
         element:<Home></Home>,
+      },
+      {
+        path:"/login",
+        element:<Login></Login>,
       }
     ]
   },
@@ -25,6 +31,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <RouterProvider router={router} />
+  <FirebaseProvider>
+  <RouterProvider router={router} />
+  </FirebaseProvider>
   </React.StrictMode>,
 )
