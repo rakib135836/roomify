@@ -1,29 +1,36 @@
-// import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
-// import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
-
-
-// const { user, logOut } = useContext(FirebaseContext);
-
-// const handleSignOUt = () => {
-//     logOut()
-//         .then()
-//         .catch()
-// }
-
-const links = <>
-
-    <li><NavLink to={'/'}>Home</NavLink></li>
-    <li><NavLink to={'/add-tourists-spot'}>Add Tourists Spot</NavLink></li>
-    <li><NavLink to={'/all-tourists-spot'}>All Tourists Spot</NavLink></li>
-    <li><NavLink to={'/my-list'}>My List</NavLink></li>
+import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
 
 
 
-</>
 
 const NavBar = () => {
+
+
+
+    const { user, logOut } = useContext(FirebaseContext);
+
+    const handleSignOUt = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
+    const links = <>
+
+        <li><NavLink to={'/'}>Home</NavLink></li>
+        <li><NavLink to={'/add-tourists-spot'}>Add Tourists Spot</NavLink></li>
+        <li><NavLink to={'/all-tourists-spot'}>All Tourists Spot</NavLink></li>
+        <li><NavLink to={'/my-list'}>My List</NavLink></li>
+
+
+
+    </>
+
+
+
     return (
         <div className="mx-auto my-7">
             <div className="navbar  bg-base-100">
@@ -53,30 +60,28 @@ const NavBar = () => {
 
 
                     <div className="w-10 rounded-full">
-                        {/* {user ? (
+                        {user ? (
                             <span title={user.displayName || "Anonymous"}>
-                                <img className="rounded" alt="profile image" src={user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} />
+                                <img className="rounded" alt="profile image" src={user.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} />
                             </span>
                         ) : (
-                            <img className="rounded" alt="existing image" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        )} */}
+                            <img className="rounded" alt="existing image" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        )}
 
-                        {/* this only for ui purpose when i will get the user i will delete this  */}
-                        <img className="rounded" alt="existing image" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+
 
                     </div>
 
-                    {/* 
+
                     {
                         user ?
                             <button onClick={handleSignOUt} className="btn">Sign out </button> :
                             <Link to="/login" className="btn bg-orange-400 text-white">Sign In</Link>
-                    } */}
+                    }
 
 
 
-                    {/* this only for ui purpose when i will get the user i will delete this  */}
-                    <Link to="/login" className="btn bg-orange-400 text-white">Sign In</Link>
+
 
 
                     {/* <a href="#" className="btn bg-green-400 text-white">Register</a> */}
