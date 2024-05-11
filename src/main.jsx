@@ -12,6 +12,7 @@ import Root from './LayOut/Root';
 import Home from './pages/Home/Home';
 import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path:"/login",
         element:<Login></Login>,
+      },
+      {
+        path:"/register",
+        element:<Register></Register>
       }
     ]
   },
