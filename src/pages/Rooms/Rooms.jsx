@@ -37,13 +37,13 @@ const Rooms = () => {
             <div className="flex justify-center items-center gap-3">
 
                 <h1>filter by price:</h1>
-                <form onSubmit={handleFilter} className="flex justify-center space-x-4 my-5">
+                <div className="flex justify-center space-x-4 my-5">
                     <input
                         type="number"
                         placeholder="Min Price"
                         value={minPrice}
                         onChange={(e) => setMinPrice(e.target.value)}
-                        id="minPrice" // Add id attribute
+                        aria-label="Minimum Price" // Add aria-label attribute
                         className="border border-gray-400 px-2 py-1 rounded"
                     />
                     <input
@@ -51,11 +51,12 @@ const Rooms = () => {
                         placeholder="Max Price"
                         value={maxPrice}
                         onChange={(e) => setMaxPrice(e.target.value)}
-                        id="maxPrice" // Add id attribute
+                        aria-label="Maximum Price" // Add aria-label attribute
                         className="border border-gray-400 px-2 py-1 rounded"
                     />
-                    <input type="submit" value="Filter" className="bg-blue-500 text-white px-4 py-2 rounded" />
-                </form>
+                    <button onClick={(e) => handleFilter(e)} className="bg-blue-500 text-white px-4 py-2 rounded">Filter</button>
+                </div>
+
 
             </div>
 
