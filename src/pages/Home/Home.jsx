@@ -1,4 +1,5 @@
 import MapComponent from "./components/MapComponent";
+import NewsLetter from "./components/NewsLetter";
 import Video from "./components/Video";
 
 
@@ -9,7 +10,7 @@ const Home = () => {
             <div >
             
             <Video></Video>
-
+            <NewsLetter></NewsLetter>
             <h1>map component here </h1>
             <MapComponent></MapComponent>
             </div>
