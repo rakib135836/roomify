@@ -21,9 +21,10 @@ const NavBar = () => {
     const links = <>
 
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/add-tourists-spot'}>Add Tourists Spot</NavLink></li>
-        <li><NavLink to={'/all-tourists-spot'}>All Tourists Spot</NavLink></li>
-        <li><NavLink to={'/my-list'}>My List</NavLink></li>
+        <li><NavLink to={'/rooms'}>Rooms</NavLink></li>
+        <li><NavLink to={'/my-bookings'}>My Bookings</NavLink></li>
+        
+        {/* <li><NavLink to={'/my-list'}>My List</NavLink></li> */}
 
 
 

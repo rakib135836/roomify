@@ -1,4 +1,5 @@
 import MapComponent from "./components/MapComponent";
+import Video from "./components/Video";
 
 
 const Home = () => {
@@ -6,7 +7,10 @@ const Home = () => {
         <div>
             <h1>this is home </h1>
             <div >
-                <h1>map component here </h1>
+            
+            <Video></Video>
+
+            <h1>map component here </h1>
             <MapComponent></MapComponent>
             </div>
         </div>

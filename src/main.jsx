@@ -14,6 +14,8 @@ import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import Rooms from './pages/Rooms/Rooms';
+import RoomDetails from './pages/Rooms/RoomDetails';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,8 +32,18 @@ const router = createBrowserRouter([
       },
       {
         path:"/register",
-        element:<Register></Register>
-      }
+        element:<Register></Register>,
+      },
+      {
+        path:"/rooms",
+        element:<Rooms></Rooms>,
+        loader:()=>fetch(`${import.meta.env.VITE_API_URL}/room`),
+      },
+    {
+      path:"/room/:id",
+      element:<RoomDetails></RoomDetails>,
+      loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/room/${params.id}`),
+    }
     ]
   },
 ]);
