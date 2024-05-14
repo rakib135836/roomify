@@ -19,40 +19,41 @@ import RoomDetails from './pages/Rooms/RoomDetails';
 import MyBookings from './pages/MyBookings/MyBookings';
 import Update from './pages/Update/Update';
 import PrivateRoute from './outsideComponents/PrivateRoute/PrivateRoute';
+import { HelmetProvider } from 'react-helmet-async';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-        path:"/",
-        element:<Home></Home>,
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:"/login",
-        element:<Login></Login>,
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:"/register",
-        element:<Register></Register>,
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path:"/rooms",
-        element:<Rooms></Rooms>,
-        loader:()=>fetch(`${import.meta.env.VITE_API_URL}/room`),
+        path: "/rooms",
+        element: <Rooms></Rooms>,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/room`),
       },
-    {
-      path:"/room/:id",
-      element:<RoomDetails></RoomDetails>,
-      loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/room/${params.id}`),
-    },
-    {
-      path:"/my-bookings",
-      element:<PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
-    },
-    {
-      
+      {
+        path: "/room/:id",
+        element: <RoomDetails></RoomDetails>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/room/${params.id}`),
+      },
+      {
+        path: "/my-bookings",
+        element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
+      },
+      {
+
         path: "/update/:id",
         element: <Update></Update>,
         loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/getting-bookings/${params.id}`)
@@ -63,8 +64,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-  <FirebaseProvider>
-  <RouterProvider router={router} />
-  </FirebaseProvider>
+    <FirebaseProvider>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
+    </FirebaseProvider>
   </React.StrictMode>,
 )

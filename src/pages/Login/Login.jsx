@@ -1,9 +1,10 @@
 
 import { useContext, useState } from "react";
-import { FaGoogle} from "react-icons/fa6";
+import { FaGoogle } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { Helmet } from "react-helmet";
 
 
 
@@ -16,7 +17,7 @@ const Login = () => {
 
     const [loginError, setLoginError] = useState('');
 
-    const { signIn, googleSignIn} = useContext(FirebaseContext);
+    const { signIn, googleSignIn } = useContext(FirebaseContext);
 
 
 
@@ -40,7 +41,7 @@ const Login = () => {
             })
     }
 
-    
+
 
 
 
@@ -82,7 +83,9 @@ const Login = () => {
 
         <div>
 
-
+            <Helmet>
+                <title>roomify | login</title>
+            </Helmet>
 
             <div className="hero min-h-screen bg-base-200">
 
@@ -128,7 +131,7 @@ const Login = () => {
                             login with google
                         </button>
 
-                        
+
 
                         {
                             loginError && <p className="text-red-500"> {loginError}</p>

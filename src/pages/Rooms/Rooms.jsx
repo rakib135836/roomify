@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import RoomCard from "./RoomCard";
 import { useState } from "react";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 
 const Rooms = () => {
@@ -32,6 +33,10 @@ const Rooms = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>roomify | rooms</title>
+            </Helmet>
             <h1 className="capitalize font-bold text-3xl text-center my-5">rooms</h1>
 
             <div className="flex justify-center items-center gap-3">

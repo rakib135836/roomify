@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 
 const Update = () => {
@@ -54,6 +55,10 @@ const Update = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>roomify | update</title>
+            </Helmet>
         
             <form onSubmit={ handleUpdate}>
                 <p>room type:{type}</p>

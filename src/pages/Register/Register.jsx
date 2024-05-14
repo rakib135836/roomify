@@ -6,6 +6,7 @@ import { FirebaseContext } from '../../FirebaseProvider/FirebaseProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEyeSlash, FaEye } from 'react-icons/fa6';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -63,7 +64,9 @@ const Register = () => {
     return (
         <div>
           
-           
+           <Helmet>
+            <title>roomify | register</title>
+           </Helmet>
 
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">

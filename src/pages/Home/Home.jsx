@@ -1,5 +1,6 @@
 
 
+import { Helmet } from "react-helmet";
 import FeaturedRooms from "./components/FeaturedRooms";
 import MapComponent from "./components/MapComponent";
 import NewsLetter from "./components/NewsLetter";
@@ -15,6 +16,10 @@ const Home = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>roomify | home</title>
+            </Helmet>
             <h1>this is home </h1>
             <div>
                 <Video></Video>

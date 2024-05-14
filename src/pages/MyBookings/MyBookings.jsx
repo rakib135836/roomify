@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const MyBookings = () => {
 
@@ -74,6 +75,10 @@ const MyBookings = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>roomify | my booking</title>
+            </Helmet>
             <section className="container px-4 mx-auto">
                 <div className="flex items-center gap-x-3">
                     <h2 className="text-lg font-medium text-gray-800 dark:text-white">My Bookings</h2>
