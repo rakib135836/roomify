@@ -27,31 +27,29 @@ const RoomDetails = () => {
     const details = useLoaderData();
     const { room_type, image, description, price_per_night, room_size, availability, special_offers,_id } = details;
 
-    const handleSubmit=async e=>{
+    const handleSubmit = async e => {
         e.preventDefault();
-        // const form=e.target; 
-        const id=_id;
-        const email=user?.email;
-        const userName=user?.displayName;
-        const date=startDate;
-        const type=room_type;
-        const price=price_per_night;
-        const review="";
-
-        const bookingDetails={id,email,userName,date,type,price,review}
-        console.table(bookingDetails);
-
-        try{
-            const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/booking`,bookingDetails)
-            console.log(data)
-            if(data.insertedId){
+        const id = _id;
+        const email = user?.email;
+        const userName = user?.displayName;
+        const date = startDate;
+        const type = room_type;
+        const price = price_per_night;
+        const review = { rating: "", comment: "" }; // Empty review object
+    
+        const bookingDetails = { id, email, userName, date, type, price, review };
+    
+        try {
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/booking`, bookingDetails);
+            console.log(data);
+            if (data.insertedId) {
                 notify();
             }
+        } catch (err) {
+            console.error(err);
         }
-        catch (err){
-            console.error(err)
-        }
-    }
+    };
+    
 
     return (
         <section className="bg-white dark:bg-gray-900">
@@ -122,7 +120,7 @@ const RoomDetails = () => {
                                     <div className="modal-action">
                                         <form method="dialog">
                                             {/* if there is a button in form, it will close the modal */}
-                                            <button className="btn">Cancel Order</button>
+                                            <button className="btn">close modal</button>
                                         </form>
                                     </div>
                                 </div>
