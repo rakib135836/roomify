@@ -29,27 +29,7 @@ const MyBookings = () => {
 
     console.log(bookings);
 
-    // update operation
-
-    // const handleUpdate = async e => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const date = startDate;
-    //     const rating = form.select.value; // Get rating from select input
-    //     const comment = form.text.value; // Get comment from text input
-
-    //     const updateDetails = { date, review: { rating, comment } };
-    //     console.table(updateDetails);
-
-    //     try {
-    //         const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/bookings/${_id}`, updateDetails); // Include booking ID in the URL
-    //         console.log(data);
-    //         // Handle success
-    //     } catch (err) {
-    //         console.error(err);
-    //         // Handle error
-    //     }
-    // };
+  
 
 
 
