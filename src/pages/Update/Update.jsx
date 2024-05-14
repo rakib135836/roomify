@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // imports for date picker
 
 import DatePicker from "react-datepicker";
@@ -10,6 +13,8 @@ import axios from "axios";
 
 
 const Update = () => {
+
+    const notify = () => toast("data updated successfully ");
 
     const [startDate, setStartDate] = useState(new Date())
 
@@ -27,19 +32,22 @@ const Update = () => {
         e.preventDefault();
         const form = e.target;
         const date = startDate;
-        const rating = form.select.value; // Get rating from select input
-        const comment = form.text.value; // Get comment from text input
+        const rating = form.select.value; 
+        const comment = form.text.value; 
 
         const updateDetails = { date, review: { rating, comment } };
         console.table(updateDetails);
 
         try {
-            const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/bookings/${_id}`, updateDetails); // Include booking ID in the URL
+            const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/bookings/${_id}`, updateDetails); 
             console.log(data);
             // Handle success
+            if (data.modifiedCount) {
+                notify('data updated successfully');
+            }
         } catch (err) {
             console.error(err);
-            // Handle error
+           
         }
     };
 
@@ -83,6 +91,7 @@ const Update = () => {
                 <input type="submit" className="btn btn-block bg-blue-400" name="" id="" value='confirm order' />
 
             </form>
+            <ToastContainer />
         </div>
     );
 };
