@@ -2,12 +2,29 @@ import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 // for aos 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import axios from 'axios';
 
 
 const RoomCard = ({ room }) => {
+
+
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+          try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/review-room/${room._id}`);
+            setReviews(response.data);
+          } catch (error) {
+            console.error("Error fetching reviews:", error);
+          }
+        };
+      
+        fetchReviews();
+      }, [room._id]);
 
 
     useEffect(() => {
@@ -28,7 +45,8 @@ const RoomCard = ({ room }) => {
                     </div>
                     <div className="flex-1  bg-base-100 rounded-r-lg">
                         <p>{room_type}</p>
-                        <p>review:</p>
+                        <p>Review: {reviews?.length > 0 ? reviews[0].review.comment : "No reviews yet"}</p>
+                        <p>Review: {reviews?.length > 0 ? reviews[0].review.rating : "No rating yet"}</p>
                     </div>
                 </div>
             </Link>
