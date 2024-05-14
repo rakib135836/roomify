@@ -46,7 +46,7 @@ const RoomCard = ({ room }) => {
                     <div className="flex-1  bg-base-100 rounded-r-lg">
                         <p>{room_type}</p>
                         <p>Review: {reviews?.length > 0 ? reviews[0].review.comment : "No reviews yet"}</p>
-                        <p>Review: {reviews?.length > 0 ? reviews[0].review.rating : "No rating yet"}</p>
+                        <p>rating : {reviews?.length > 0 ? reviews[0].review.rating : "No rating yet"}</p>
                     </div>
                 </div>
             </Link>

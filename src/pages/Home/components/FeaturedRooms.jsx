@@ -42,7 +42,7 @@ const FeaturedRooms = () => {
             </div>
 
             <Link to={'/rooms'}>
-            <button className="btn  bg-[#ad7b9f]  mt-3">view all rooms</button>
+            <button className="btn btn-block  bg-[#ad7b9f]  mt-3">view all rooms</button>
             </Link>
         </div>
     );
