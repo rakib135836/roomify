@@ -35,15 +35,15 @@ const Home = () => {
             <Helmet>
                 <title>roomify | home</title>
             </Helmet>
-            <h1>this is home </h1>
+            
             <div>
                 <div data-aos="fade-up-right"><Video></Video></div>
                 <div data-aos="fade-up-left"><NewsLetter></NewsLetter></div>
-
-                <div data-aos="fade-up-right"><MapComponent></MapComponent></div>
                 <div data-aos="fade-up-left"><FeaturedRooms></FeaturedRooms></div>
                 <div data-aos="fade-up-right"><Offers></Offers></div>
                 <div data-aos="fade-up-left"><UserReviews></UserReviews></div>
+                <h1 className="text-center font-bold text-2xl my-3">Our location</h1>
+                <div className="my-5" data-aos="fade-up-right"><MapComponent></MapComponent></div>
             </div>
         </div>
     );

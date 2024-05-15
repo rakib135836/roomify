@@ -61,7 +61,7 @@ const Update = () => {
             </Helmet>
         
             <form onSubmit={ handleUpdate}>
-                <p>room type:{type}</p>
+                <p className="text-2xl text-blue-500 my-3">room type:{type}</p>
                 <label className="input input-bordered flex items-center gap-2">
                     <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
 

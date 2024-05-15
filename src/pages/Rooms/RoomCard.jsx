@@ -44,9 +44,9 @@ const RoomCard = ({ room }) => {
                         <img className="max-h-40 max-w-56 rounded-l-lg" src={image} alt="" />
                     </div>
                     <div className="flex-1  bg-base-100 rounded-r-lg">
-                        <p>{room_type}</p>
-                        <p>Review: {reviews?.length > 0 ? reviews[0].review.comment : "No reviews yet"}</p>
-                        <p>rating : {reviews?.length > 0 ? reviews[0].review.rating : "No rating yet"}</p>
+                        <p className='text-xl text-blue-500 '>{room_type}</p>
+                        <p><span className='text-green-400'>Review:</span> {reviews?.length > 0 ? reviews[0].review.comment : "No reviews yet"}</p>
+                        <p className='text-red-500'>rating : {reviews?.length > 0 ? reviews[0].review.rating : "No rating yet"}</p>
                     </div>
                 </div>
             </Link>

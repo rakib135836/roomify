@@ -44,9 +44,10 @@ const UserReviews = () => {
                 {bookings.map(booking => (
                     <div key={booking._id} style={{ height: '300px' }}>
                         <div className="legend h-1/2">
-                            <h3>{booking.userName}</h3>
-                            <p>{booking.review.comment}</p>
-                            <p>Rating: {booking.review.rating}</p>
+                            <h3>{booking?.userName}</h3>
+                            <h1 className="text-2xl text-blue-500"> {booking?.type}</h1>
+                            <p>{booking?.review.comment}</p>
+                            <p className="text-red-400">Rating: {booking?.review.rating}</p>
                         </div>
                     </div>
                 ))}

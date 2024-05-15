@@ -38,14 +38,16 @@ const Rooms = () => {
                 <title>roomify | rooms</title>
             </Helmet>
             <h1 className="capitalize font-bold text-3xl text-center my-5">rooms</h1>
+            <h1 className="text-center text-blue-400">we have rooms between 80$-1500$</h1>
 
             <div className="flex justify-center items-center gap-3">
 
                 <h1>filter by price:</h1>
+                
                 <div className="flex justify-center space-x-4 my-5">
                     <input
                         type="number"
-                        placeholder="Min Price"
+                        placeholder="$: Min Price"
                         value={minPrice}
                         onChange={(e) => setMinPrice(e.target.value)}
                         aria-label="Minimum Price" // Add aria-label attribute
@@ -53,7 +55,7 @@ const Rooms = () => {
                     />
                     <input
                         type="number"
-                        placeholder="Max Price"
+                        placeholder="$: Max Price"
                         value={maxPrice}
                         onChange={(e) => setMaxPrice(e.target.value)}
                         aria-label="Maximum Price" // Add aria-label attribute
