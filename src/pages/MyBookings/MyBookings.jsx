@@ -19,14 +19,17 @@ const MyBookings = () => {
 
     // fetching data based on email 
     useEffect(() => {
-
-        getData()
+         axios.get(`${import.meta.env.VITE_API_URL}/my-bookings/${user?.email}`,{withCredentials:true})
+         .then((data)=> { 
+            setBookings(data.data)
+         })
+        
+    
+       
     }, [user])
 
-    const getData = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_API_URL}/my-bookings/${user?.email}`)
-        setBookings(data)
-    }
+   
+      
 
     console.log(bookings);
 
@@ -55,7 +58,7 @@ const MyBookings = () => {
                 console.log(data);
 
                 // for refreshing ui 
-                getData();
+                // getData();
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",

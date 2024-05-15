@@ -3,8 +3,9 @@ import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider} from "firebase/auth";
 import { Helmet } from "react-helmet";
+
 
 
 
@@ -67,9 +68,11 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
 
-                // nevigate after login 
+                // const user={email};
 
                 navigate(location?.state ? location.state : '/')
+                // access token 
+                
             })
             .catch(error => {
                 console.error(error)
