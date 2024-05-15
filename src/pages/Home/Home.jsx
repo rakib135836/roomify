@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Offers from "./components/Offers";
+import UserReviews from "./components/UserReviews";
 
 
 
@@ -42,6 +43,7 @@ const Home = () => {
                 <div data-aos="fade-up-right"><MapComponent></MapComponent></div>
                 <div data-aos="fade-up-left"><FeaturedRooms></FeaturedRooms></div>
                 <div data-aos="fade-up-right"><Offers></Offers></div>
+                <div data-aos="fade-up-left"><UserReviews></UserReviews></div>
             </div>
         </div>
     );

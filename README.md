@@ -3,7 +3,7 @@
 # Roomify
 ## A trusted hotel booking website 
 
-[Trek Tales](https://roomify-1529f.web.app/)
+[Roomify](https://roomify-1529f.web.app/)
 
 ## Features and Characteristics
 
@@ -30,4 +30,4 @@
 
 ## Getting Started
 
-To get started with our website, simply visit [Trek Tales](https://roomify-1529f.web.app/) and create an account to unlock all features and functionalities. Happy browsing!
+To get started with our website, simply visit [Roomify](https://roomify-1529f.web.app/) and create an account to unlock all features and functionalities. Happy browsing!
