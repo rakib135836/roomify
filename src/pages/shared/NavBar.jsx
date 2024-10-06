@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
+import useAdmin from "../../hooks/useAdmin";
 
 
 
@@ -11,6 +12,8 @@ const NavBar = () => {
 
 
     const { user, logOut } = useContext(FirebaseContext);
+
+    const [adminData] = useAdmin();
 
     const handleSignOUt = () => {
         logOut()
@@ -23,7 +26,8 @@ const NavBar = () => {
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/rooms'}>Rooms</NavLink></li>
         <li><NavLink to={'/my-bookings'}>My Bookings</NavLink></li>
-        
+        {adminData && <li className="font-bold text-[#f78d79]"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>}
+
         {/* <li><NavLink to={'/my-list'}>My List</NavLink></li> */}
 
 
@@ -62,16 +66,22 @@ const NavBar = () => {
 
                     <div className="w-10 rounded-full">
                         {user ? (
-                            <span title={user.displayName || "Anonymous"}>
-                                <img className="rounded" alt="profile image" src={user.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} />
+                            <span >
+                                <img
+                                    className="rounded"
+                                    alt="profile image"
+                                    src={user.photoURL || adminData?.photo || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webphttps://i.ibb.co.com/wBBTTQm/employee3.jpg"}
+                                />
                             </span>
                         ) : (
-                            <img className="rounded" alt="existing image" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            <img
+                                className="rounded"
+                                alt="existing image"
+                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                            />
                         )}
-
-
-
                     </div>
+
 
 
                     {

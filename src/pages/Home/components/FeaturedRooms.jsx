@@ -1,33 +1,41 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const FeaturedRooms = () => {
-    const [rooms, setRooms] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
-    useEffect(() => {
-        const getData = async () => {
+    // Fetch rooms data using React Query
+    const { data: rooms = [], isLoading, error } = useQuery({
+        queryKey: ['featured-rooms'],
+        queryFn: async () => {
             try {
-                const { data } = await axios(`${import.meta.env.VITE_API_URL}/rooms`);
-                // Slice the array to include only the first 4 elements
-                const firstFourRooms = data.slice(0, 4);
-                setRooms(firstFourRooms);
-            } catch (error) {
-                console.error("Error fetching rooms:", error);
+                const res = await axiosPublic.get('/rooms');
+          
+                return res.data;
+            } catch (err) {
+                console.error('Error fetching rooms:', err);
+                throw err;  // Properly handle errors
             }
-        };
+        }
+    });
 
-        getData();
-    }, []);
+    // Handle loading and error states
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error loading rooms</div>;
+    }
 
     return (
         <div className="my-8">
             <h1 className="text-center font-bold text-2xl text-[#f78d79] my-5">Featured Rooms</h1>
+
             {/* Display information for the first 4 rooms */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-3 ">
-
-
-                {rooms.map(room => (
+            <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-3">
+                {rooms.slice(0, 4).map(room => (
                     <div key={room?._id} className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
                         <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md" style={{ backgroundImage: `url(${room?.image})` }}></div>
                         <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
@@ -42,7 +50,7 @@ const FeaturedRooms = () => {
             </div>
 
             <Link to={'/rooms'}>
-            <button className="btn btn-block  bg-[#ad7b9f]  mt-3">view all rooms</button>
+                <button className="btn btn-block bg-[#ad7b9f] mt-3">View all rooms</button>
             </Link>
         </div>
     );

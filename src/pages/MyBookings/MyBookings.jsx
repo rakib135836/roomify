@@ -1,18 +1,19 @@
-import { useContext, useEffect, useState } from "react";
-import { FirebaseContext } from "../../FirebaseProvider/FirebaseProvider";
+import {  useEffect, useState } from "react";
+
 import axios from "axios";
 import Swal from 'sweetalert2';
 
 
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import useAuth from "../../hooks/useAuth";
 
 const MyBookings = () => {
 
 
     
 
-    const { user } = useContext(FirebaseContext);
+    const { user } = useAuth();
     const [bookings, setBookings] = useState([]);
 
 

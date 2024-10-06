@@ -3,71 +3,37 @@ import ReactDOM from 'react-dom/client'
 
 import './index.css'
 
+
+
 import {
-  createBrowserRouter,
 
   RouterProvider,
 } from "react-router-dom";
-import Root from './LayOut/Root';
-import Home from './pages/Home/Home';
-import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
-import Rooms from './pages/Rooms/Rooms';
-import RoomDetails from './pages/Rooms/RoomDetails';
-import MyBookings from './pages/MyBookings/MyBookings';
-import Update from './pages/Update/Update';
-import PrivateRoute from './outsideComponents/PrivateRoute/PrivateRoute';
-import { HelmetProvider } from 'react-helmet-async';
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root></Root>,
-    errorElement: <ErrorPage></ErrorPage>,
-    children: [
-      {
-        path: "/",
-        element: <Home></Home>,
-      },
-      {
-        path: "/login",
-        element: <Login></Login>,
-      },
-      {
-        path: "/register",
-        element: <Register></Register>,
-      },
-      {
-        path: "/rooms",
-        element: <Rooms></Rooms>,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/room`),
-      },
-      {
-        path: "/room/:id",
-        element: <RoomDetails></RoomDetails>,
-        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/room/${params.id}`),
-      },
-      {
-        path: "/my-bookings",
-        element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
-      },
-      {
 
-        path: "/update/:id",
-        element: <Update></Update>,
-        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/getting-bookings/${params.id}`)
-      }
-    ]
-  },
-]);
+
+import FirebaseProvider from './FirebaseProvider/FirebaseProvider';
+import { HelmetProvider } from 'react-helmet-async';
+import { router } from './Routes/Routes';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <FirebaseProvider>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-      </HelmetProvider>
-    </FirebaseProvider>
-  </React.StrictMode>,
+  <div className='font-Briem max-w-7xl mx-auto'>
+    <React.StrictMode>
+
+      <FirebaseProvider>
+
+        <QueryClientProvider client={queryClient}>
+
+          <HelmetProvider>
+            <RouterProvider router={router} />
+          </HelmetProvider>
+
+        </QueryClientProvider>
+
+      </FirebaseProvider>
+
+    </React.StrictMode>,
+  </div>
 )
